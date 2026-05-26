@@ -1,6 +1,6 @@
 import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { memories } from "../data";
+import { memories, quiz } from "../data";
 import { PageFx } from "../components/PageFx";
 
 const TOTAL = memories.length;
@@ -23,7 +23,7 @@ export function MemoryPage() {
   const next = () =>
     isLast ? navigate("/appreciation/1") : navigate(`/memory/${idx + 2}`);
   const prev = () =>
-    idx === 0 ? navigate("/") : navigate(`/memory/${idx}`);
+    idx === 0 ? navigate(`/quiz/${quiz.length}`) : navigate(`/memory/${idx}`);
 
   return (
     <div className="page">

@@ -59,7 +59,7 @@ export function CodeEntry() {
       setSuccess(true);
       setConfettiKey((k) => k + 1);
       sessionStorage.setItem("unlocked", "1");
-      setTimeout(() => navigate("/memory/1"), 1400);
+      setTimeout(() => navigate("/quiz/1"), 1400);
     } else {
       setError("Not quite — try again 💭");
       setShake(true);

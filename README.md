@@ -2,7 +2,7 @@
 
 A playful, animated React site built with **Bun + TypeScript + Framer Motion**.
 
-It starts with a 4-digit mystery code, opens into 7 animated memory pages, and finishes with two pages of all the things I love about her.
+It starts with a 4-digit mystery code, then a little 5-question multiple-choice quiz about her (favorite color, comfort food, etc.), then 7 animated memory pages, and finishes with two pages of all the things I love about her.
 
 ## Run it
 
@@ -26,6 +26,7 @@ Everything you'd want to change lives in **`src/data.ts`**:
 
 - `SECRET_CODE` — the 4 digits she has to figure out (currently `1402`)
 - `CODE_HINT` — the line shown under the lock
+- `quiz[]` — the 5 multiple-choice questions. Each has `options`, a `correctIndex`, a sweet `reaction` shown on the right answer, and an optional `nudge` for wrong answers. **Edit `correctIndex` to point at her real answer.**
 - `memories[]` — the 7 memory pages (title, caption, date, photo, animation flavor)
 - `appreciations1[]` / `appreciations2[]` — the two appreciation lists
 - `YOUR_NAME` — signature at the end
@@ -63,6 +64,7 @@ src/
     Confetti.tsx           — confetti burst on unlock + final page
   pages/
     CodeEntry.tsx          — the 4-digit lock screen
+    QuizPage.tsx           — multiple-choice "do I know you?" quiz
     MemoryPage.tsx         — one of the 7 memories
     AppreciationPage.tsx   — appreciation list pages
     FinalPage.tsx          — "I love you" closing page

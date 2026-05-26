@@ -83,6 +83,78 @@ export const memories: Memory[] = [
   },
 ];
 
+// ===== Quiz: "do you think I know you?" =====
+// Each question has options + one correct answer (the index into options).
+// `reaction` is the line she sees after picking the right one — make it personal.
+export type QuizQuestion = {
+  prompt: string;
+  options: string[];
+  correctIndex: number;
+  // shown after she picks correctly — your chance to be sweet
+  reaction: string;
+  // shown if she picks wrong (kept playful)
+  nudge?: string;
+  emoji?: string;
+};
+
+export const quiz: QuizQuestion[] = [
+  {
+    prompt: "What's your favorite color?",
+    options: ["Pink", "Lavender", "Sage green", "Sunset orange"],
+    correctIndex: 0, // ← change to her real answer
+    reaction: "Of course 💖 it suits you perfectly.",
+    nudge: "Hmm... not quite. Try again 🌸",
+    emoji: "🎨",
+  },
+  {
+    prompt: "What's your comfort food?",
+    options: ["Pasta", "Sushi", "Pancakes", "Ice cream"],
+    correctIndex: 0, // ← change to her real answer
+    reaction: "I knew it. I've watched you light up over it too many times.",
+    nudge: "Close — but I know your real weakness 😉",
+    emoji: "🍝",
+  },
+  {
+    prompt: "What's your favorite song (or one of them)?",
+    options: [
+      "the one we always play in the car",
+      "the one you hum in the kitchen",
+      "the one that makes you cry every time",
+      "the one we 'first-danced' to",
+    ],
+    correctIndex: 0, // ← change to her real answer
+    reaction: "Yes ❤️ I've memorized every word because of you.",
+    nudge: "Try again — I'm paying attention, I promise.",
+    emoji: "🎶",
+  },
+  {
+    prompt: "Your ideal way to spend a Saturday is...",
+    options: [
+      "Cozy at home with me",
+      "A long walk somewhere pretty",
+      "Brunch and shopping",
+      "An adventure with no plan",
+    ],
+    correctIndex: 0, // ← change to her real answer
+    reaction: "Same. Every single time. 🛋️",
+    nudge: "Almost — think simpler, with me 💭",
+    emoji: "📅",
+  },
+  {
+    prompt: "What's the thing you do that I secretly find the cutest?",
+    options: [
+      "How you laugh when you're caught off guard",
+      "The way you scrunch your nose",
+      "Your little happy dance",
+      "How you sing badly on purpose",
+    ],
+    correctIndex: 0, // ← change to her real answer
+    reaction: "I notice everything you do. I just don't always tell you.",
+    nudge: "You'd never guess — and that's part of why I love it.",
+    emoji: "💘",
+  },
+];
+
 // ===== Things I appreciate about you (page 1 — split into 2 pages) =====
 export const appreciations1 = [
   { emoji: "✨", text: "Your laugh — it lights up entire rooms (and me)." },

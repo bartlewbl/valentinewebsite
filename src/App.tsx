@@ -1,5 +1,6 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { CodeEntry } from "./pages/CodeEntry";
+import { QuizPage } from "./pages/QuizPage";
 import { MemoryPage } from "./pages/MemoryPage";
 import { AppreciationPage } from "./pages/AppreciationPage";
 import { FinalPage } from "./pages/FinalPage";
@@ -11,6 +12,7 @@ export function App() {
       <div className="app">
         <Routes>
           <Route path="/" element={<CodeEntry />} />
+          <Route path="/quiz/:n" element={<QuizPage />} />
           <Route path="/memory/:n" element={<MemoryPage />} />
           <Route path="/appreciation/:n" element={<AppreciationPage />} />
           <Route path="/final" element={<FinalPage />} />
