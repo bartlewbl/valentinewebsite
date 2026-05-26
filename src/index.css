@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Fredoka', system-ui, sans-serif;
+  color: #2a1b3d;
+  background: linear-gradient(135deg, #ffd1dc 0%, #ffe5b4 25%, #c1f0f6 50%, #d4a5ff 75%, #ffb6e6 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+  min-height: 100vh;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.app {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.page {
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.handwritten {
+  font-family: 'Caveat', cursive;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+button:focus-visible {
+  outline: 3px solid #ff6bcb;
+  outline-offset: 3px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Floating background hearts */
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-hearts .heart {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.6;
+  user-select: none;
+}
+
+/* Reusable pretty button */
+.btn-cta {
+  background: linear-gradient(135deg, #ff6bcb 0%, #ffa07a 50%, #ffd166 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.85rem 2rem;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(255, 107, 203, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-cta:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(255, 107, 203, 0.55);
+}
+
+.btn-cta:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.6);
+  color: #2a1b3d;
+  font-weight: 500;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s ease;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.title-rainbow {
+  background: linear-gradient(90deg, #ff6bcb, #ffa07a, #ffd166, #6bcf7f, #6bb6ff, #b66bff);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowFlow 6s linear infinite;
+}
+
+@keyframes rainbowFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* ===== Code entry ===== */
+.code-card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 32px;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 20px 60px rgba(186, 86, 191, 0.25);
+  text-align: center;
+  max-width: 460px;
+  width: 100%;
+  z-index: 1;
+}
+
+.code-card h1 {
+  font-size: 2.4rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.1;
+}
+
+.code-card .hint {
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  color: #b3528d;
+  margin: 0.5rem 0 1.8rem;
+}
+
+.code-inputs {
+  display: flex;
+  gap: 0.7rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.code-inputs input {
+  width: 64px;
+  height: 80px;
+  border-radius: 18px;
+  border: 3px solid rgba(255, 107, 203, 0.4);
+  background: white;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 600;
+  text-align: center;
+  color: #2a1b3d;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.code-inputs input:focus {
+  border-color: #ff6bcb;
+  transform: scale(1.06);
+  box-shadow: 0 6px 18px rgba(255, 107, 203, 0.35);
+}
+
+.code-inputs.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-8px); }
+  80% { transform: translateX(8px); }
+}
+
+.error-msg {
+  color: #e91e63;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  min-height: 1.5rem;
+}
+
+/* ===== Memory pages ===== */
+.memory-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  border-radius: 32px;
+  padding: 2rem;
+  max-width: 560px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(186, 86, 191, 0.25);
+  text-align: center;
+  z-index: 1;
+}
+
+.memory-photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #ffb6e6, #c1f0f6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b3528d;
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  margin-bottom: 1.4rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 0 0 4px white, 0 10px 24px rgba(186, 86, 191, 0.2);
+}
+
+.memory-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.memory-title {
+  font-family: 'Caveat', cursive;
+  font-size: 2.6rem;
+  line-height: 1;
+  margin-bottom: 0.6rem;
+  color: #b3528d;
+}
+
+.memory-caption {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #4a3360;
+  margin-bottom: 1.6rem;
+}
+
+.memory-meta {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: #8e6aa8;
+  margin-bottom: 0.6rem;
+}
+
+/* Page nav */
+.page-nav {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.progress-dots {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 1.2rem;
+  z-index: 1;
+}
+
+.progress-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+.progress-dots .dot.active {
+  background: #ff6bcb;
+  width: 28px;
+}
+
+/* ===== Appreciation pages ===== */
+.appreciation-page {
+  max-width: 700px;
+  width: 100%;
+  z-index: 1;
+}
+
+.appreciation-page h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 0.4rem;
+  line-height: 1.1;
+}
+
+.appreciation-page .subtitle {
+  font-family: 'Caveat', cursive;
+  font-size: 1.7rem;
+  color: #b3528d;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.appreciation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  list-style: none;
+}
+
+.appreciation-item {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 20px;
+  padding: 1rem 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #2a1b3d;
+  box-shadow: 0 6px 18px rgba(186, 86, 191, 0.15);
+}
+
+.appreciation-item .emoji {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+/* Final page */
+.final-page {
+  text-align: center;
+  z-index: 1;
+  max-width: 640px;
+}
+
+.final-page h1 {
+  font-size: 3.4rem;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.final-page p {
+  font-family: 'Caveat', cursive;
+  font-size: 1.9rem;
+  color: #b3528d;
+  line-height: 1.3;
+  margin-bottom: 0.8rem;
+}
+
+.final-page .signature {
+  font-family: 'Caveat', cursive;
+  font-size: 2.2rem;
+  color: #2a1b3d;
+  margin-top: 2rem;
+}
+
+.big-heart {
+  font-size: 6rem;
+  display: inline-block;
+  filter: drop-shadow(0 8px 16px rgba(255, 107, 203, 0.5));
+}
+
+@media (max-width: 480px) {
+  .code-card { padding: 2rem 1.3rem; }
+  .code-card h1 { font-size: 1.9rem; }
+  .code-inputs input { width: 52px; height: 68px; font-size: 2rem; }
+  .memory-title { font-size: 2.1rem; }
+  .appreciation-page h1, .final-page h1 { font-size: 2.3rem; }
+}
