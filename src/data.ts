@@ -89,8 +89,12 @@ export const memories: Memory[] = [
 export type QuizQuestion = {
   prompt: string;
   options: string[];
-  correctIndex: number;
-  // shown after she picks correctly — your chance to be sweet
+  // For single-select questions, the index of the correct option.
+  correctIndex?: number;
+  // For multi-select questions, the indexes that must ALL be selected.
+  // If set, the question is rendered as multi-select.
+  correctIndexes?: number[];
+  // shown after she gets it right — your chance to be sweet
   reaction: string;
   // shown if she picks wrong (kept playful)
   nudge?: string;
@@ -100,58 +104,43 @@ export type QuizQuestion = {
 export const quiz: QuizQuestion[] = [
   {
     prompt: "What's your favorite color?",
-    options: ["Pink", "Lavender", "Sage green", "Sunset orange"],
-    correctIndex: 0, // ← change to her real answer
-    reaction: "Of course 💖 it suits you perfectly.",
-    nudge: "Hmm... not quite. Try again 🌸",
+    options: ["Pink", "Lavender", "Black", "Sunset orange"],
+    correctIndex: 2,
+    reaction: "Black it is 🖤 mysterious, just like you.",
+    nudge: "Think darker 🖤",
     emoji: "🎨",
   },
   {
     prompt: "What's your comfort food?",
     options: ["Pasta", "Sushi", "Pancakes", "Ice cream"],
-    correctIndex: 0, // ← change to her real answer
-    reaction: "I knew it. I've watched you light up over it too many times.",
-    nudge: "Close — but I know your real weakness 😉",
-    emoji: "🍝",
+    correctIndex: 3,
+    reaction: "Ice cream 🍦 I've watched you light up over it too many times.",
+    nudge: "Cold and sweet... try again 😉",
+    emoji: "🍨",
   },
   {
-    prompt: "What's your favorite song (or one of them)?",
-    options: [
-      "the one we always play in the car",
-      "the one you hum in the kitchen",
-      "the one that makes you cry every time",
-      "the one we 'first-danced' to",
-    ],
-    correctIndex: 0, // ← change to her real answer
-    reaction: "Yes ❤️ I've memorized every word because of you.",
-    nudge: "Try again — I'm paying attention, I promise.",
-    emoji: "🎶",
+    prompt: "What's your favorite breakfast?",
+    options: ["Pancakes", "Toast & jam", "Eggs", "Cereal"],
+    correctIndex: 2,
+    reaction: "Eggs 🍳 of course. I've made them for you enough times to know.",
+    nudge: "Almost — think simpler, the breakfast I always make you 🍳",
+    emoji: "🍳",
   },
   {
-    prompt: "Your ideal way to spend a Saturday is...",
-    options: [
-      "Cozy at home with me",
-      "A long walk somewhere pretty",
-      "Brunch and shopping",
-      "An adventure with no plan",
-    ],
-    correctIndex: 0, // ← change to her real answer
-    reaction: "Same. Every single time. 🛋️",
-    nudge: "Almost — think simpler, with me 💭",
-    emoji: "📅",
-  },
-  {
-    prompt: "What's the thing you do that I secretly find the cutest?",
-    options: [
-      "How you laugh when you're caught off guard",
-      "The way you scrunch your nose",
-      "Your little happy dance",
-      "How you sing badly on purpose",
-    ],
-    correctIndex: 0, // ← change to her real answer
-    reaction: "I notice everything you do. I just don't always tell you.",
-    nudge: "You'd never guess — and that's part of why I love it.",
+    prompt: "What's the cutest thing about you?",
+    options: ["Your smile", "Your cute eyes", "Your laugh", "Your little nose"],
+    correctIndex: 1,
+    reaction: "Your eyes 👀 they get me every single time.",
+    nudge: "I get lost in them all the time — try again.",
     emoji: "💘",
+  },
+  {
+    prompt: "Pick all my favorite qualities about you 💖",
+    options: ["Beautiful", "Intelligent", "Hard working", "Cute"],
+    correctIndexes: [0, 1, 2, 3],
+    reaction: "All of them. Every. Single. One. 💖",
+    nudge: "There's more than that — keep going.",
+    emoji: "🌟",
   },
 ];
 

@@ -285,6 +285,24 @@ a {
   animation: shake 0.5s;
 }
 
+.quiz-option.selected {
+  border-color: #b66bff;
+  background: linear-gradient(135deg, #f1e3ff, #e3d1ff);
+  color: #4a1a7a;
+}
+
+.quiz-option.selected .quiz-bullet {
+  background: linear-gradient(135deg, #b66bff, #8e44ec);
+}
+
+.quiz-option.missed {
+  border-color: rgba(255, 107, 203, 0.7);
+  background: linear-gradient(135deg, #fff0f7, #ffe0ee);
+  color: #8a2848;
+  outline: 2px dashed rgba(255, 107, 203, 0.6);
+  outline-offset: -8px;
+}
+
 .quiz-bullet {
   width: 32px;
   height: 32px;
