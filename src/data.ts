@@ -94,10 +94,17 @@ export type QuizQuestion = {
   // For multi-select questions, the indexes that must ALL be selected.
   // If set, the question is rendered as multi-select.
   correctIndexes?: number[];
+  // OPTIONAL: split a multi-select into waves. Each wave is an array of
+  // option indexes. Options outside the currently-revealed waves are hidden.
+  // When all options in the revealed waves are selected, the next wave
+  // reveals automatically with a playful animation.
+  waves?: number[][];
   // shown after she gets it right — your chance to be sweet
   reaction: string;
   // shown if she picks wrong (kept playful)
   nudge?: string;
+  // shown briefly when a new wave reveals (multi-select with waves)
+  waveTeaser?: string;
   emoji?: string;
 };
 
@@ -136,10 +143,24 @@ export const quiz: QuizQuestion[] = [
   },
   {
     prompt: "Pick all my favorite qualities about you 💖",
-    options: ["Beautiful", "Intelligent", "Hard working", "Cute"],
-    correctIndexes: [0, 1, 2, 3],
+    options: [
+      "Beautiful",
+      "Intelligent",
+      "Hard working",
+      "Cute",
+      "Strong",
+      "Sexy",
+      "One in a million",
+      "Crazy (the good kind)",
+      "Mine",
+      "Diligent",
+      "Loyal",
+    ],
+    correctIndexes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    waves: [[0, 1, 2, 3], [4, 5, 6, 7, 8, 9, 10]],
     reaction: "All of them. Every. Single. One. 💖",
     nudge: "There's more than that — keep going.",
+    waveTeaser: "...wait, there's more 😘",
     emoji: "🌟",
   },
 ];
